@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Investor Cards Grid (Beginner)</title>
+
+  <!-- Internal CSS (styles inside the same HTML file) -->
+  <style>
+    /* Reset-ish for simple, consistent spacing */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      background: #f4f6f8;
+      color: #222;
+      padding: 24px;
+      line-height: 1.4;
+    }
+
+    h1 {
+      margin-bottom: 16px;
+      font-size: 1.5rem;
+      color: #0b3b5a;
+    }
+
+    /* Grid container for cards */
+    .cards {
+      display: grid;
+      gap: 18px;
+      /* Large screens: 4 columns (default) */
+      grid-template-columns: repeat(4, 1fr);
+      align-items: start;
+    }
+
+    /* A single card */
+    .card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden; /* keep images and logo inside rounded corners */
+      box-shadow: 0 6px 18px rgba(10,30,50,0.06);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    /* hover effect */
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 26px rgba(10,30,50,0.12);
+    }
+
+    /* top image for investor (fills width) */
+    .card .hero {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* card body */
+    .card .body {
+      padding: 12px 14px;
+      display: grid;
+      grid-template-columns: 1fr auto; /* text on left, logo on right */
+      gap: 10px;
+      align-items: center;
+    }
+
+    /* investor details block (selector example) */
+    .card .body .info > h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+      color: #12344a;
+    }
+
+    .card .body .info > p {
+      font-size: 0.88rem;
+      color: #4a5560;
+      margin-top: 0;
+    }
+
+    /* small circular company logo, using a child selector */
+    .card .body .logo img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #eef4f8;
+      display: block;
+    }
+
+    /* some footer details using combinator and pseudo-class */
+    .card .footer {
+      margin-top: auto;
+      padding: 10px 14px;
+      border-top: 1px solid #f0f3f6;
+      font-size: 0.82rem;
+      color: #657085;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .card .footer span:first-child { font-weight: 600; color: #0b3b5a; }
+
+    /* MEDIA QUERIES: adjust columns by screen width
+       Medium screens -> 3 cards per row
+       Small screens  -> 2 cards per row
+       Very small     -> 1 card per row
+    */
+    @media (max-width: 1024px) {
+      .cards { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 700px) {
+      .cards { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 420px) {
+      .cards { grid-template-columns: 1fr; }
+      .card .hero { height: 160px; } /* slightly taller hero on narrow screens */
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Investor Cards — simple grid</h1>
+
+  <!-- Grid container -->
+  <section class="cards" aria-label="Investor cards list">
+
+    <!-- Card 1 -->
+    <article class="card">
+      <!-- Replace the src with the image link you will use -->
+      <img class="hero" src=https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2024-11-07/Screenshot%202024-11-07%20132903_850195.png alt="Investor 1 photo">
+      <div class="body">
+        <div class="info">
+          <h3>Investor Name</h3>
+          <p>Investor role • 10 years experience in tech investing</p>
+        </div>
+        <div class="logo">
+          <!-- Replace logo src -->
+          <img src=https://masai-course.s3.ap-south-1.amazonaws.com/editor/uploads/2024-11-07/Screenshot%202024-11-07%20132903_850195.png alt="Company 1 logo">
+        </div>
+      </div>
+      <div class="footer">
+        <span>$2.5M</span>
+        <span>Series A</span>
+      </div>
+    </article>
+
+    <!-- Card 2 -->
+    <article class="card">
+      <img class="hero" src="https://example.com/investor2.jpg" alt="Investor 2 photo">
+      <div class="body">
+        <div class="info">
+          <h3>Investor Two</h3>
+          <p>Seed investor • Focus on fintech and health</p>
+        </div>
+        <div class="logo">
+          <img src="https://example.com/company2-logo.jpg" alt="Company 2 logo">
+        </div>
+      </div>
+      <div class="footer">
+        <span>$800K</span>
+        <span>Seed</span>
+      </div>
+    </article>
+
+    <!-- Card 3 (copy/paste to add more) -->
+    <article class="card">
+      <img class="hero" src="https://example.com/investor3.jpg" alt="Investor 3 photo">
+      <div class="body">
+        <div class="info">
+          <h3>Investor Three</h3>
+          <p>VC partner • Consumer products & marketplaces</p>
+        </div>
+        <div class="logo">
+          <img src="https://example.com/company3-logo.jpg" alt="Company 3 logo">
+        </div>
+      </div>
+      <div class="footer">
+        <span>$5M+</span>
+        <span>Growth</span>
+      </div>
+    </article>
+
+    <!-- Card 4 -->
+    <article class="card">
+      <img class="hero" src="https://example.com/investor4.jpg" alt="Investor 4 photo">
+      <div class="body">
+        <div class="info">
+          <h3>Investor Four</h3>
+          <p>Angel investor • Early-stage startups</p>
+        </div>
+        <div class="logo">
+          <img src="https://example.com/company4-logo.jpg" alt="Company 4 logo">
+        </div>
+      </div>
+      <div class="footer">
+        <span>$120K</span>
+        <span>Pre-seed</span>
+      </div>
+    </article>
+
+    <!-- Add more cards by copying any <article class="card">...</article> block -->
+  </section>
+
+</body>
+</html>
